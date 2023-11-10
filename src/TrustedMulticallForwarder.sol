@@ -164,7 +164,7 @@ contract TrustedMulticallForwarder is ERC2771Forwarder {
             calli = calls[i];
             (result.success, result.returnData) =
                 calli.target.call(abi.encodePacked(calli.callData, msg.sender));
-            if (calli.allowFailure && !result.success) {
+            if (!calli.allowFailure && !result.success) {
                 bytes memory revertData = result.returnData;
                 uint256 len = revertData.length;
                 assembly {
@@ -202,7 +202,7 @@ contract TrustedMulticallForwarder is ERC2771Forwarder {
             (result.success, result.returnData) = calli.target.call{value: val}(
                 abi.encodePacked(calli.callData, msg.sender)
             );
-            if (calli.allowFailure && !result.success) {
+            if (!calli.allowFailure && !result.success) {
                 bytes memory revertData = result.returnData;
                 uint256 len = revertData.length;
                 assembly {
