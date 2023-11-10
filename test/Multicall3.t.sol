@@ -177,7 +177,7 @@ contract Multicall3Test is Test {
     assertEq(block.coinbase, multicall.getCurrentBlockCoinbase());
   }
 
-  function testGetCurrentBlockDifficulty() public {
+  function testGetPrevRandao() public {
     assertEq(block.prevrandao, multicall.getPrevRandao());
   }
 

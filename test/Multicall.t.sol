@@ -64,7 +64,7 @@ contract MulticallTest is Test {
     assertEq(block.timestamp, multicall.getCurrentBlockTimestamp());
   }
 
-  function testGetCurrentBlockDifficulty() public {
+  function testGetPrevRandao() public {
     assertEq(block.prevrandao, multicall.getPrevRandao());
   }
 
